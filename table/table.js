@@ -45,24 +45,6 @@ app.put("/tables/:tableId", (req, res) => {
   res.send(table);
 });
 
-// API to return the index of a column in a table
-app.get("/tables/:tableId/columns/:columnName", (req, res) => {
-  const tableId = parseInt(req.params.tableId);
-  const columnName = req.params.columnName;
-
-  const table = tables.find((t) => t.id === tableId);
-  if (!table) {
-    return res.status(404).send("Table not found");
-  }
-
-  const columnIndex = table.columns.indexOf(columnName);
-  if (columnIndex === -1) {
-    return res.status(404).send("Column not found");
-  }
-
-  res.json({ columnIndex });
-});
-
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
