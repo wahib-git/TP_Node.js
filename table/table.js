@@ -1,11 +1,10 @@
 const express = require("express");
-const bodyParser = require("body-parser");
 
 const app = express();
 const port = 3001;
 
 // Middleware to parse JSON request bodies
-app.use(bodyParser.json());
+app.use(express.json());
 
 // Sample data
 const tables = [
