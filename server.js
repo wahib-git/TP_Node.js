@@ -1,9 +1,16 @@
-const http = require("http");
+const express = require("express");
+const app = express();
+const port = 3000;
 
-const server = http.createServer((req, res) => {
-  res.writeHead(200, { "Content-Type": "text/plain" });
-  res.end("hello from my server");
+// Middleware to parse JSON requests
+app.use(express.json());
+
+// Define a simple route
+app.get("/", (req, res) => {
+  res.send("Hello, Express!");
 });
 
-const PORT = 4000;
-server.listen(PORT, () => console.log("server running on port " + PORT));
+// Start the server
+app.listen(port, () => {
+  console.log(`Server is running at http://localhost:${port}`);
+});
